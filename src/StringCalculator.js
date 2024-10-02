@@ -9,5 +9,11 @@ export default function add(numbers) {
   }
 
   const numberArray = numbers.split(delimiter).map(Number);
+  const negatives = numberArray.filter((num) => num < 0);
+
+  if (negatives.length > 0) {
+    throw new Error(`Negative numbers not allowed: ${negatives.join(", ")}`);
+  }
+
   return numberArray.reduce((sum, num) => sum + num, 0);
 }
